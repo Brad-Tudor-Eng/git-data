@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "build",
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Classic",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./typings", "./node_modules/@types"]
+  },
+  "exclude": ["./node_modules", "./build", "./repos", "./logs"],
+  "include": ["**/*.ts"]
+}

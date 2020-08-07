@@ -1,0 +1,25 @@
+{
+  "name": "solidworks_api_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && tsc --watch",
+    "devStart": "nodemon ./build/src/index.js",
+    "dev": "concurrently 'yarn run build' 'yarn run devStart'",
+    "singleBuild": "rimraf build && tsc",
+    "singleStart": "node ./build/src/index.js",
+    "start": "concurrently 'yarn run singleBuild' 'yarn run singleStart'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "simple-git": "^2.9.0",
+    "@types/node": "^14.0.27"
+  }
+}
