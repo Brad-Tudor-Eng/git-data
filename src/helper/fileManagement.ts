@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as rimraf from "rimraf";
 
-import { Paths, headers, statsHeaders } from "../constants/index";
+import { Paths, statsHeaders } from "../constants/index";
 
 /**
  * @summary Creates a file to store the repos statistics
@@ -46,10 +46,10 @@ export const createTSVLogFile = ({
 };
 
 /**
-* @summary Adds tsv data to the summary file
-* @params repoName: name of the repository
-* @params summaryData: data to append
-*/
+ * @summary Adds tsv data to the summary file
+ * @params repoName: name of the repository
+ * @params summaryData: data to append
+ */
 export const appendToSummaryFile = ({
   repoName,
   summaryData,
@@ -59,16 +59,15 @@ export const appendToSummaryFile = ({
 }) => fs.appendFileSync(Paths.Summary, `${repoName}\n${summaryData}`);
 
 /**
-* @summary Processes the raw summary data into a TSV object
-*/
+ * @summary Processes the raw summary data into a TSV object
+ */
 export const mapSummaryDataToTSV = (rawData) =>
   Object.values(rawData).reduce((data, line) => {
     const { author, insertions, deletions, count } = line as any;
     return data + `\t${author}\t${count}\t${insertions}\t${deletions}\n`;
   }, "") as string;
 
-
 /**
-* @summary removes item at the give path
-*/
+ * @summary removes item at the give path
+ */
 export const removeDirectory = (directory) => rimraf.sync(directory);

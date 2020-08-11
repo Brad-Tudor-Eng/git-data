@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import simpleGit from "simple-git";
 
-import { headers } from "../constants/index";
+import { headers, Paths } from "../constants/index";
+import { importJson } from "./index";
 
 const git = simpleGit("./");
 
@@ -34,15 +35,18 @@ export const cloneRepo = async ({
  * @returns git repository log
  */
 
-export const getRepoLogs = async ({ directory, startDate }) =>
-  await simpleGit(directory)
-    .checkout("remotes/origin/develop") //@ts-ignore
+export const getRepoLogs = async ({ directory, startDate }) => {
+  const { branch } = importJson({ path: Paths.Config });
+
+  return await simpleGit(directory)
+    .checkout(`remotes/origin/${branch}`) //@ts-ignore
     .log({
       "--date": "local",
       "--pretty": 'format:"%h%x09%an%x09%ad%x09%"',
       "--after": startDate,
       "--stat": true,
     });
+};
 
 const updateStats = (
   author: string,

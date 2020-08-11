@@ -1,18 +1,20 @@
-import { Paths, authorMap, startDate } from "../constants/index";
+import { Paths } from "../constants/index";
 import {
   appendToSummaryFile,
-  clearOldFiles,
+  importJson,
   cloneRepo,
   createTSVLogFile,
   getRepoLogs,
   getRepoStatistics,
-  importJson,
   mapSummaryDataToTSV,
   removeDirectory,
 } from "./index";
 
 export const processSingleRepo = async ({ repoName, repos }) => {
+  const { authorMap, startDate } = importJson({ path: Paths.Config });
+
   const directory = `${Paths.Repos}/${repoName}`;
+
   await cloneRepo({ repo: repos[repoName], directory });
 
   const log = await getRepoLogs({ directory, startDate });

@@ -1,4 +1,4 @@
 {
-  "watch": ["./build/*"],
-  "ext": "js"
+  "watch": ["./build/*", "./config.json"],
+  "ext": "js, json"
 }

@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf build && tsc --watch",
-    "devStart": "nodemon ./build/src/index.js",
-    "dev": "concurrently 'yarn run build' 'yarn run devStart'",
-    "singleBuild": "rimraf build && tsc",
-    "singleStart": "node ./build/src/index.js",
-    "start": "concurrently 'yarn run singleBuild' 'yarn run singleStart'"
+    "dev:build": "rimraf build && tsc --watch",
+    "dev:start": "nodemon ./build/src/index.js",
+    "single:build": "rimraf build && tsc",
+    "single:start": "node ./build/src/index.js"
   },
   "author": "",
   "license": "ISC",
